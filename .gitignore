@@ -4,4 +4,4 @@ package-lock.json
 
 src/config/config.json
 
-data/*
+src/menu/apex/lib/data/*
