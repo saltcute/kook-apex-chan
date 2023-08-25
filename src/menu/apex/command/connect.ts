@@ -1,6 +1,7 @@
 import { BaseCommand, CommandFunction, BaseSession, Card } from 'kasumi.js';
 import apex, { Apex, humanToTrackerGG } from '../lib/apex';
-import { apexSearch } from './apex.search.app';
+import apexSearch from './search';
+import menu from '..';
 class ApexConnect extends BaseCommand {
     name = 'connect';
     description = '绑定账号';
@@ -43,4 +44,6 @@ class ApexConnect extends BaseCommand {
     }
 }
 
-export const apexConnect = new ApexConnect();
+const apexConnect = new ApexConnect();
+menu.load(apexConnect);
+export default apexConnect;

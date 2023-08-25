@@ -2,6 +2,7 @@ import { BaseCommand, CommandFunction, BaseSession, Card } from 'kasumi.js';
 import apex, { Apex, humanToTrackerGG } from '../lib/apex';
 import { generateImage } from '../lib/drawer';
 import sharp from 'sharp';
+import menu from '..';
 
 class ApexSearch extends BaseCommand {
     name = 'search';
@@ -140,4 +141,6 @@ class ApexSearch extends BaseCommand {
     }
 }
 
-export const apexSearch = new ApexSearch();
+const apexSearch = new ApexSearch();
+menu.load(apexSearch);
+export default apexSearch;
