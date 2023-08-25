@@ -23,7 +23,11 @@
   },
   "homepage": "https://github.com/hexona69/kasumi-template#readme",
   "dependencies": {
+    "@types/memory-cache": "^0.2.3",
     "kasumi.js": "^0.3.7",
+    "memory-cache": "^0.2.0",
+    "puppeteer": "^21.1.0",
+    "sharp": "^0.32.5",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
     "upath": "^2.0.1"
