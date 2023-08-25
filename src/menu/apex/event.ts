@@ -4,12 +4,12 @@ import apexSearch from "./command/search";
 
 client.on('message.text', (event) => {
     switch (true) {
-        case /^绑定(origin|pc|xbl|xbox|psn|ps)? ?(.+)$/.test(event.content): {
+        case /^(绑定|bd)(origin|pc|xbl|xbox|psn|ps)? ?(.+)$/.test(event.content): {
             const [platform, username] = getMatches(event.content, /^绑定(origin|pc|xbl|xbox|psn|ps)? ?(.+)$/);
             apexConnect.exec([username, platform], event, client);
             break;
         };
-        case /^查[询找](origin|pc|xbl|xbox|psn|ps)? ?(.+)?$/.test(event.content): {
+        case /^(查[询找]|c[xz])(origin|pc|xbl|xbox|psn|ps)? ?(.+)?$/.test(event.content): {
             const [platform, username] = getMatches(event.content, /^查[询找](origin|pc|xbl|xbox|psn|ps)? ?(.+)?$/);
             apexSearch.exec([username, platform], event, client);
             break;
