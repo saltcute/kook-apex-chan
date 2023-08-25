@@ -5,3 +5,5 @@ package-lock.json
 src/config/config.json
 
 src/menu/apex/lib/data/*
+
+.DS_Store
