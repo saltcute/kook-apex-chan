@@ -311,7 +311,7 @@ export class Apex {
             url: endpoint
         }).then((res) => {
             return res.data
-        }).catch((e) => { console.log(e); throw e; })
+        }).catch((e) => { /*console.log(e);*/ throw e; })
     }
     private async requestor_als(endpoint: string, params?: any) {
         return this._requestor_als({
@@ -319,7 +319,7 @@ export class Apex {
             params
         }).then((res) => {
             return res.data
-        }).catch((e) => { console.log(e); throw e; })
+        }).catch((e) => { /*console.log(e);*/ throw e; })
     }
     private async cache(keyp: string[], func: () => Promise<any>) {
         let cache = this.getCache(keyp);
