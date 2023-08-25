@@ -90,7 +90,8 @@ export async function generateImage({
     let ar_until = ar_point_until_next_rank < 0 ? 'over' : 'until';
     br_point_until_next_rank = Math.abs(br_point_until_next_rank);
     ar_point_until_next_rank = Math.abs(ar_point_until_next_rank);
-    eval(`appliedTemplate = \`${rawTemplate}\`;`);
+    eval(`appliedTemplate = \`${rawTemplate.split("</script>")[1]}\`;`);
+    appliedTemplate = rawTemplate.split("</script>")[0] + "</script>" + appliedTemplate;
     fs.mkdirSync(upath.join(__dirname, 'data'), { recursive: true });
     fs.writeFileSync(upath.join(__dirname, 'data', 'latest.htm'), appliedTemplate);
     await page.setContent(appliedTemplate);
