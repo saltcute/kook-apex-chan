@@ -84,12 +84,12 @@ export async function generateImage({
     detail_number_3: string
 }) {
     page = await page;
-    let rawTemplate = fs.readFileSync(upath.join(__dirname, 'template', 'apex.htm'), { encoding: 'utf-8', flag: 'r' });
     let appliedTemplate: string = "";
     let br_until = br_point_until_next_rank < 0 ? 'over' : 'until';
     let ar_until = ar_point_until_next_rank < 0 ? 'over' : 'until';
     br_point_until_next_rank = Math.abs(br_point_until_next_rank);
     ar_point_until_next_rank = Math.abs(ar_point_until_next_rank);
+    let rawTemplate = fs.readFileSync(upath.join(__dirname, 'template', 'apex.htm'), { encoding: 'utf-8', flag: 'r' });
     eval(`appliedTemplate = \`${rawTemplate.split("</script>")[1]}\`;`);
     appliedTemplate = rawTemplate.split("</script>")[0] + "</script>" + appliedTemplate;
     fs.mkdirSync(upath.join(__dirname, 'data'), { recursive: true });

@@ -13,6 +13,20 @@ class ApexSearch extends BaseCommand {
         super();
         this.apexClient = apex()
     }
+    romanize(num: number) {
+        if (isNaN(num))
+            return "";
+        var digits = String(+num).split(""),
+            key = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM",
+                "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
+                "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+            roman = "",
+            i = 3;
+        while (i--)
+            // @ts-ignore
+            roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+        return Array(+digits.join("") + 1).join("M") + roman;
+    }
     func: CommandFunction<BaseSession, any> = async (session) => {
         let ts = Date.now();
         let last_ts = ts;
@@ -68,10 +82,10 @@ class ApexSearch extends BaseCommand {
                 //stat_header_1 = stat_number_1 = stat_header_2 = stat_number_2 = stat_header_3 = stat_number_3 = stat_header_4 = stat_number_4 = '';
 
                 stat_header_1 = "Level";
-                stat_number_1 = formater.format(stat.level);
+                stat_number_1 = stat.levelPrestige > 0 ? `${this.romanize(stat.levelPrestige)}.${formater.format(stat.level)}` : formater.format(stat.level);
                 stat_header_2 = "BP Level"
-                stat_number_2 = formater.format(stat.battlepass.level);
-                stat_header_3 = "Active Bans";
+                stat_number_2 = stat.battlepass.level > 0 ? formater.format(stat.battlepass.level) : "Unk";
+                stat_header_3 = "Active Ban";
                 stat_number_3 = stat.bans.isActive ? `${formater.format(stat.bans.remainingSeconds)}s` : "None";
                 stat_header_4 = "Platform";
                 stat_number_4 = stat.platform;
