@@ -385,7 +385,7 @@ export class Apex {
 
 let apex: Apex
 export default () => {
-    const trackergg_token: string = client.config.get('trackerggKey'), als_token: string = client.config.get('alsKey');
+    const trackergg_token: string = client.config.getSync("apex::trackerggKey"), als_token: string = client.config.getSync("apex::trackerggKey");
     if (!apex) apex = new Apex(trackergg_token, als_token);
     return apex;
 }
