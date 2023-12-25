@@ -369,7 +369,7 @@ export class Apex {
 
     public async getPlayerDetail(platform: 'PC' | 'PS4' | 'X1', username: string): Promise<userDetail | error> {
         return this.cache(['player_detail', platform, username], async () => {
-            return this.requestor_als(upath.join('bridge'), { auth: client.config.get("alsKey"), player: username, platform })
+            return this.requestor_als(upath.join('bridge'), { auth: client.config.get("apex::alsKey"), player: username, platform })
                 .then((res) => { return res; })
                 .catch((e) => { throw e });
         }).catch(e => { throw e });
