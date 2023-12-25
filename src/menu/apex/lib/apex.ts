@@ -369,14 +369,14 @@ export class Apex {
 
     public async getPlayerDetail(platform: 'PC' | 'PS4' | 'X1', username: string): Promise<userDetail | error> {
         return this.cache(['player_detail', platform, username], async () => {
-            return this.requestor_als(upath.join('bridge'), { auth: await client.config.getOne("apex::alsKey"), player: username, platform })
+            return this.requestor_als(upath.join('bridge'), { auth: client.config.getSync("apex::alsKey"), player: username, platform })
                 .then((res) => { return res; })
                 .catch((e) => { throw e });
         }).catch(e => { throw e });
     }
     public async getPredatorRequirement(type: 'RP' | 'AP', platform: 'PC' | 'PS4' | 'X1'): Promise<predator.requirement> {
         return this.cache(['predator_requirement', type, platform], async () => {
-            return this.requestor_als('predator')
+            return this.requestor_als('predator', { auth: await client.config.getOne("apex::alsKey") })
                 .then((res: predator.data) => { return res[type][platform]; })
                 .catch((e) => { throw e });
         })
